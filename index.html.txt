@@ -1,0 +1,241 @@
+important
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Rose Day Anki ❤️</title>
+
+<style>
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  font-family:'Segoe UI',sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow-x:hidden;
+  color:#fff;
+  text-align:center;
+}
+
+.card{
+  background:rgba(0,0,0,0.35);
+  padding:28px;
+  border-radius:24px;
+  max-width:380px;
+  z-index:2;
+  animation:fadeIn 2s ease;
+}
+
+h1{
+  font-size:2rem;
+  margin-bottom:12px;
+}
+
+p{
+  font-size:1.05rem;
+  line-height:1.6;
+}
+
+/* Main photo */
+.main-photo{
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid rgba(255,255,255,0.7);
+  box-shadow:0 0 25px rgba(255,80,110,0.9);
+  margin:15px auto;
+}
+
+/* Gallery */
+.gallery{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:15px 0;
+}
+
+.gallery img{
+  width:80px;
+  height:80px;
+  border-radius:14px;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,0.6);
+}
+
+.rose{
+  font-size:2.8rem;
+  margin:10px 0;
+  animation:float 3s infinite;
+}
+
+.from{
+  margin-top:18px;
+  font-style:italic;
+  opacity:.95;
+}
+
+/* Love note */
+.love-note{
+  margin-top:20px;
+  font-size:1.05rem;
+  line-height:1.6;
+  opacity:0;
+  animation:fadeInNote 2s ease forwards;
+  animation-delay:2s;
+}
+
+/* Blooming flowers */
+.bloom-container{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+}
+
+.bloom{
+  width:120px;
+  opacity:0;
+  transform:scale(0.2);
+}
+
+.lily{
+  animation:bloom 2.5s ease forwards;
+  animation-delay:4s;
+}
+
+.orchid{
+  animation:bloom 2.5s ease forwards;
+  animation-delay:6s;
+}
+
+/* Hearts */
+.heart{
+  position:absolute;
+  color:rgba(255,255,255,0.8);
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  0%{transform:translateY(-10vh);opacity:1;}
+  100%{transform:translateY(110vh);opacity:0;}
+}
+
+@keyframes float{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+  100%{transform:translateY(0);}
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:scale(0.95);}
+  to{opacity:1;transform:scale(1);}
+}
+
+@keyframes fadeInNote{
+  from{opacity:0;transform:translateY(10px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes bloom{
+  0%{opacity:0;transform:scale(0.2);filter:blur(6px);}
+  100%{opacity:1;transform:scale(1);filter:blur(0);}
+}
+
+.expired{
+  font-size:1.4rem;
+  padding:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="content">
+
+<h1>Happy Rose Day Anki ❤️</h1>
+
+<!-- MAIN PHOTO (RED OUTFIT) -->
+<img src="photo1.PNG" class="main-photo" alt="Anki">
+
+<!-- GALLERY -->
+<div class="gallery">
+  <img src="photo2.PNG" alt="">
+  <img src="photo3.PNG" alt="">
+  <img src="photo4.PNG" alt="">
+</div>
+
+<div class="rose">🌹</div>
+
+<p>
+Just like these moments,<br>
+you fill my life with warmth,<br>
+happiness, and love 💖
+</p>
+
+<p>
+This rose — and my heart — are yours.
+</p>
+
+<div class="from">
+— With love,<br>
+Shashank ❤️
+</div>
+
+<!-- LOVE NOTE -->
+<div class="love-note">
+<p>
+You will forever be the rose I rise up for every day,<br>
+and your essence will always be a part of my soul.<br><br>
+I love you today, tomorrow, and forever.<br>
+Happy Rose Day to you,<br>
+my <b>Pinky Lily</b> and <b>Blue Orchid</b> ❤️
+</p>
+</div>
+
+<!-- BLOOMING FLOWERS -->
+<div class="bloom-container">
+  <img src="pinky-lily.PNG" class="bloom lily" alt="">
+  <img src="blue-orchid.PNG" class="bloom orchid" alt="">
+</div>
+
+</div>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/10/03/audio_3b92d20d4d.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Floating hearts
+function createHeart(){
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(Math.random()*3+4)+"s";
+  heart.style.fontSize=(Math.random()*20+10)+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),7000);
+}
+setInterval(createHeart,300);
+
+// Expiry after Feb 7
+const now=new Date();
+const expiry=new Date(now.getFullYear(),1,8);
+if(now>=expiry){
+  document.body.innerHTML=`
+  <div class="expired">
+    🌹 Rose Day has passed 🌹<br><br>
+    But my feelings for you<br>
+    never will ❤️
+  </div>`;
+}
+</script>
+
+</body>
+</html>
